@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS users (
+	username VARCHAR(20) PRIMARY KEY,
+	password VARCHAR(20) NOT NULL,
+	name VARCHAR(30) NOT NULL,
+	organiser BOOLEAN DEFAULT false
+);
+
+CREATE TABLE IF NOT EXISTS events (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(100) NOT NULL UNIQUE,
+	start_date DATE NOT NULL,
+	end_date DATE NOT NULL,
+	owner VARCHAR(20),
+	FOREIGN KEY (owner) REFERENCES users(username)
+);
+
+CREATE TABLE IF NOT EXISTS attendees (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	username VARCHAR(20),
+	event_id INT,
+	FOREIGN KEY (username) REFERENCES users(username),
+	FOREIGN KEY (event_id) REFERENCES events(id)
+);
