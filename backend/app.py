@@ -3,11 +3,15 @@ from flask import Flask
 import mysql.connector
 import json
 
+# Initialize the app
 app = Flask(__name__)
+
+# Load the config file
+app.config.from_object('config')
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return 'Hello, Wold!'
 
 def main():
     app.run(host='0.0.0.0')
