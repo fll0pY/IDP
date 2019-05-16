@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>{{ the_title }}</h1>
+
+<form action="{{ url_for('handle_data') }}" method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name" required>
+    <br />
+    <label for="start_date">Start Date</label>
+    <input name="start_date" id="start_date" required>
+    <br />
+    <label for="end_date">End Date</label>
+    <input name="end_date" id="end_date" required>
+    <br />
+    <input type="submit" value="Add">
+</form>
+
+{% endblock %}
+
+<form method="post">

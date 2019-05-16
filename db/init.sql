@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS users (
-	username VARCHAR(20) PRIMARY KEY,
-	password VARCHAR(20) NOT NULL,
-	name VARCHAR(30) NOT NULL,
+	username VARCHAR(64) PRIMARY KEY,
+	name VARCHAR(120) NOT NULL,
+	password_hash VARCHAR(128) NOT NULL,
 	organiser BOOLEAN DEFAULT false
 );
 

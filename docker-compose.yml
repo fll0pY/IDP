@@ -3,10 +3,21 @@ version: '3.1'
 services:
   server:
     build: ./backend
+    volumes:
+     - ./backend/app:/app
     links:
       - db
     ports:
       - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    volumes:
+     - ./frontend/app:/app
+    links:
+      - server
+    ports:
+      - "5001:5001"
 
   db:
     image: mysql:5.7
@@ -17,7 +28,6 @@ services:
       MYSQL_DATABASE: idp
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ./db:/docker-entrypoint-initdb.d
       - my-datavolume:/var/lib/mysql
 
   adminer:

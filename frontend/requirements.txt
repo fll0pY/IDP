@@ -1,4 +1,6 @@
 Flask
+Flask-Menu
+requests
 mysql-connector
 flask-sqlalchemy
 mysqlclient
